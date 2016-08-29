@@ -6,7 +6,7 @@ var path = require('path');
 module.exports = {
 	sendMail: function(options, callback) {
 		var template = options.template || 'testEmail';
-		var from = options.from || sails.config.email.from || 'Ayon Saha ✔ <ayonsaha2012@gmail.com>';
+		var from = options.from || sails.config.email.from || 'Ayon Saha ✔ <jio@thecatalystindia.in>';
 		var to = options.to || 'ayonsaha2011@gmail.com';
 		var cc = options.cc || '';
 		var bcc = options.bcc || '';
@@ -28,8 +28,8 @@ module.exports = {
 		    host: sails.config.email.host || 'smtp.gmail.com',
 		    port: sails.config.email.port || 587,
 		    auth: {
-		        user: sails.config.email.user || 'ayon@tulipinfotek.com',
-		        pass: sails.config.email.password || 'ayonsah@tulip'
+		        user: sails.config.email.user || 'skoolstarsupp@gmail.com',
+		        pass: sails.config.email.password || 'skadmin@123'
 		    }
 		}));
 		// setup e-mail data with unicode symbols

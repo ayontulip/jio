@@ -24,9 +24,8 @@ module.exports.email = {
 module.exports.email = {
     host: 'smtp.gmail.com',
     port: 587,
-    user: 'root',
-    user: 'ayon@tulipinfotek.com',
-    password: 'ayonsah@tulip',
+    user: 'skoolstarsupp@gmail.com',
+    password: 'skadmin@123',
     templateDirectory: 'views/emailTemplates',
-    from: 'Ayon Saha <ayonsaha2012@gmail.com>'
+    from: 'Ayon Saha <jio@thecatalystindia.in>'
 };

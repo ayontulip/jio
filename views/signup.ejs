@@ -1,0 +1,44 @@
+<% layout('loginlayout') -%>
+<% block('title', '- Signup') -%>
+<% if (errors) {%>
+  <% errors.forEach(function (error) { %>
+  <div class="col-sm-5 alert alert-danger" style="position: absolute; top: 10px; right: 10px; line-height: 2; z-index: 100;">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+    </button>
+    <%- __(error) %>
+    </div>
+  <% }) %>
+<% } %>
+
+<!--************************************************************************************-->
+<section id="form">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 form-text">
+                <form action="/viewer-save" method="post">
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                    <h1>YOUR VIEWS<span class="account">AND EMOTIONS</span><span class="clint cl"> MAKE A DIFFERENCE.</span></h1>
+                    <div class="form-box viewer">
+                    <div class="form-input">
+                          <input type="text" name="first_name" placeholder="First Name" required/>
+                        </div>
+                        <div class="form-input">
+                          <input type="text" name="last_name" placeholder="Last Name" required/>
+                        </div>
+                      <div class="form-input">
+                          <input type="email" name="email" placeholder="Email" required/>
+                        </div>
+                        <div class="form-input">
+                          <input type="password" name="password" placeholder="Password" required/>
+                        </div>
+                        <div class="form-input">
+                          <input type="submit" class="submit" value="Register"/>
+                        </div>
+                      <span> Already registered ? <a href="/"> Login</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

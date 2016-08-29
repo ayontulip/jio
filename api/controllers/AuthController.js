@@ -46,7 +46,7 @@ module.exports = {
 
                 // console.info(user);
                 req.session.authenticated = true;
-                if (user.role == 2) {
+                if (user.role == 99) {
                     req.session.isClient = true;
                 }
                 req.session.currentuser = user;
@@ -71,17 +71,16 @@ module.exports = {
 
         passport.authenticate('local', function (err, user, info) {
             if ((err) || (!user)) {
-                return res.send({
-                    message: info.message,
-                    user: user
-                });
+                req.flash('error', info.message)
+                return res.redirect('/');
             }
             req.logIn(user, function (err) {
                 if (err) res.send(err);
 
                 req.session.authenticated = true;
+                req.session.isClient = false;
                 req.session.currentuser = user;
-                return res.redirect('/client/dashboard');
+                return res.redirect('/dashboard');
             });
 
         })(req, res);
@@ -89,6 +88,53 @@ module.exports = {
 
     logout: function (req, res) {
         req.logout();
+        req.session.authenticated = false;
+        req.session.isClient = false;
+        req.session.destroy();
         res.redirect('/');
+    },
+    /**
+     * facebook login
+     */
+    'facebook': function (req, res, next) { 
+        passport.authenticate('facebook', { scope: 'email'},
+            function (err, user) {
+                req.logIn(user, function (err) {
+                if(err) {
+                    req.session.flash = 'There was an error';
+                    res.redirect('user/login');
+                } else {
+                    req.session.user = user;
+                    res.redirect('/user/dashboard');
+                }
+            });
+        })(req, res, next);
+
+    },
+    'facebook_callback': function (req, res, next) {  
+        /*passport.authenticate('facebook',
+        function (req, res) {
+            res.redirect('/dashboard');
+        })(req, res, next);*/
+
+        passport.authenticate('facebook', function (err, user, info) {
+            console.info(err);
+            console.info(user);
+            console.info(info);
+            if ((err) || (!user)) {
+                req.flash('error', 'There was an error logging you in with Facebook')
+                return res.redirect('/');
+            }
+            req.logIn(user, function (err) {
+                if (err) res.send(err);
+
+                req.session.authenticated = true;
+                req.session.isClient = false;
+                req.session.currentuser = user;
+                return res.redirect('/dashboard');
+            });
+
+        })(req, res, next);
+
     }
 };

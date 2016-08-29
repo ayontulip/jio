@@ -1,0 +1,53 @@
+<% layout('adminmaster') -%>
+<% block('title', 'Profile') -%>
+
+<% stylesheet('/../admin/lib/css/checkbox3.min.css') -%>
+
+<% block('breadcrumb', ` <li class="active">Profile</li> ` ) -%>
+<!-- Main Content -->
+             <div class="container-fluid">
+                <div class="side-body">
+                    <!--<div class="page-title">
+                        <span class="title">Form UI Kits</span>
+                        <div class="description">A ui elements use in form, input, select, etc.</div>
+                    </div>-->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        <div class="title">Profile</div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <form action="/panel/profile" class="form-horizontal" method="post">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email address</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile">File input</label>
+                                            <input type="file" id="exampleInputFile">
+                                            <p class="help-block">Example block-level help text here.</p>
+                                        </div>
+                                        <div class="checkbox">
+                                          <div class="checkbox3 checkbox-round">
+                                            <input type="checkbox" id="checkbox-1">
+                                            <label for="checkbox-1">
+                                              Check me out
+                                            </label>
+                                          </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>

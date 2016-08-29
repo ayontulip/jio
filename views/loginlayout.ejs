@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jio <%-blocks.title%></title>
+<link href="/../main/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link rel="stylesheet" href="/../main/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/../main/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/../main/bootstrap/css/bootstrap-theme.min.css">
+<link href='https://fonts.googleapis.com/css?family=Lato:100,300,300italic,400,400italic,700italic,700,900,900italic' rel='stylesheet' type='text/css'>
+<link type="text/css" rel="stylesheet" href="/../main/style.css" />
+<!-- page CSS -->    
+<%-stylesheets%> 
+<script src="/../main/libs/jquery-2.2.3.min.js"></script>
+<script src="/../main/bootstrap/js/bootstrap.min.js"></script>
+<script src="/../main/main.js"></script>
+<%-blocks.header%>
+</head>
+<body>
+<div class="outerTringle"><div class="innerTringle"></div></div>
+<!--****************************************************************************************************************************-->
+<header>
+	<div class="container-fluid">
+    	<div class="row">
+        	<div class="col-sm-4 logo">
+            	<a href="/"><img src="/../main/images/logo.png"></a>
+            </div>
+        </div>
+    </div>
+</header>
+<% if (flash.has('all')) {
+var obj =flash.all(); 
+Object.keys(obj).forEach(function (key) { 
+    if (key == "error") { %>
+    <div class="col-sm-4 alert alert-danger" style="position: absolute; top: 10px; right: 10px; line-height: 2;z-index: 999999;">
+   <% }else{ %>
+   <div class="col-sm-4 alert alert-<%=key%>" style="position: absolute; top: 10px; right: 10px; line-height: 2;z-index: 999999;">
+    <% };%>
+       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+       </button>
+       <%- obj[key] %>
+    </div>
+<% }); } %>
+
+<%-body -%>
+
+<footer>
+	<div class="container-fluid">
+    	<div class="row">
+        	<div class="col-sm-6 ">
+            <nav>
+            	<ul>
+                	<li><a href="#">About Us</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </nav>
+            </div>
+            <div class="col-sm-6">
+            	<div class="copy">© 2016 THE JIO APP</div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -6,23 +6,21 @@ module.exports.routes = {
   'post /client/login': 'AuthController.clientlogin',
   'get /client/logout': 'AuthController.clientlogout',
   'get /client/signup': 'AuthController.clientSignup',
-  'get /client/dashboard': 'client/DashboardController.index',
+  'post /client-save': 'UserController.clientsave',
 
+  /**
+   * Viewer section
+   */
 
-  '/': {
-    view: 'homepage'
-  },
+  'get /': 'HomeController.index',
+  'get /signup': 'HomeController.signup',
 
-  'get /login': {
-       view: 'login'
-  },
+  'get /auth/facebook': 'AuthController.facebook',
+  'get /auth/facebook/callback': 'AuthController.facebook_callback',
   'post /login': 'AuthController.login',
+  'post /viewer-save': 'UserController.viewerSave',
 
   '/logout': 'AuthController.logout',
-
-  'get /signup': {
-    view: 'signup'
-  }
 
 
 };
