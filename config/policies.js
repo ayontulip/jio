@@ -14,6 +14,11 @@ module.exports.policies = {
     '*': ['isClient']
   },
 
+  'UserController' : {
+    clientPasswordUpdate: ['isClient'],
+    updatePassword: ['isClient'],
+  },
+
   /**
    * viewer policies
    */

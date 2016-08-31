@@ -70,11 +70,14 @@ a:focus, a:hover { color:#fff;}
 header { background-color:#304a72; padding:10px 0; position:fixed; width:100%; left:0; top:0; z-index:101;}
 .dropdown { float:right; padding:8px 20px 0 0;}
 .dropdown a { float:right;}
+.dropdown a img {width:40px; height:40px; border:2px solid #a1a1a1; border-radius:50%;}
 .dropdown h1 { padding:10px 20px 0 0; margin:0px; display:inline-block; color:#FFF; font: 600 14px 'Open Sans', Arial, Helvetica, sans-serif;}
 .dropdown h1 span {font:14px 'Open Sans', Arial, Helvetica, sans-serif;}
-.dropdown-menu {left:80px; margin-top:12px;}
+.dropdown-menu {left:110px; margin-top:12px;}
 .dropdown-menu  li a { float:left; width:100%;}
 .dropdown-menu  li a:hover {background:#304a72; color:#fff;}
+ul.dropdown-menu::after{ border-bottom: 6px solid #fff;  border-left: 6px solid transparent;  border-right: 6px solid transparent;  content: "";  right: 28px;  position: absolute;
+    top: -6px;}
 /**************************************************************************************************/
 /**************************************************************************************************/
 /* Sidebar section */
@@ -220,7 +223,7 @@ footer nav ul li a:hover { color:#000;}
    .logo a img { display:inline-block;}
    .drop { text-align:center; width:100%;}
    .dropdown { float:none; display:inline-block;}
-   .dropdown-menu { margin-top:5px;}
+   .dropdown-menu { margin-top:8px;}
    .sidebar nav { padding:30px 0 0 0;}
    footer nav {padding:0px;}
    .arrow img { display:none;}

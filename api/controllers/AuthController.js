@@ -50,7 +50,17 @@ module.exports = {
                     req.session.isClient = true;
                 }
                 req.session.currentuser = user;
-                return res.redirect('/client/dashboard');
+                var redirect_to = '/client/dashboard';
+                Log.findOne({ user_id : user.id }, function(err, user) {
+
+                    if(!user) {
+                        req.flash('success', "Welcome, Please set your password")
+                        redirect_to = '/client/update-password';
+                    }
+                });
+                Log.create({ user_id : user.id }, function (err, user) {
+                    return res.redirect(redirect_to);
+                });
             });
 
         })(req, res);
@@ -80,7 +90,10 @@ module.exports = {
                 req.session.authenticated = true;
                 req.session.isClient = false;
                 req.session.currentuser = user;
-                return res.redirect('/dashboard');
+                var redirect_to = '/dashboard';
+                Log.create({ user_id : user.id }, function (err, user) {
+                    return res.redirect(redirect_to);
+                });
             });
 
         })(req, res);
@@ -118,11 +131,13 @@ module.exports = {
         })(req, res, next);*/
 
         passport.authenticate('facebook', function (err, user, info) {
-            console.info(err);
-            console.info(user);
-            console.info(info);
             if ((err) || (!user)) {
-                req.flash('error', 'There was an error logging you in with Facebook')
+                if(info) {
+                    req.flash('error', info.message)
+                }
+                else {
+                    req.flash('error', 'There was an error logging you in with Facebook')
+                }
                 return res.redirect('/');
             }
             req.logIn(user, function (err) {
@@ -131,7 +146,11 @@ module.exports = {
                 req.session.authenticated = true;
                 req.session.isClient = false;
                 req.session.currentuser = user;
-                return res.redirect('/dashboard');
+                var redirect_to = '/dashboard';
+                Log.create({ user_id : user.id }, function (err, user) {
+                    return res.redirect(redirect_to);
+                });
+                
             });
 
         })(req, res, next);

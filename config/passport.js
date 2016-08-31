@@ -52,7 +52,7 @@ passport.deserializeUser(function(id, done) {
 
             var emailID = profile.emails[0].value;
             // find the user in the database based on their facebook id
-            Users.findOne({ fb_id : profile.id, or: [{email : emailID}] }, function(err, user) {
+            Users.findOne({ email : emailID }, function(err, user) {
 
                 // if there is an error, stop everything and return that
                 // ie an error connecting to the database
@@ -63,6 +63,11 @@ passport.deserializeUser(function(id, done) {
 
                 // if the user is found, then log them in
                 if (user) {
+                    if (user.role == 99) {
+                        return done(true, false, {
+                          message: 'You are already a client in JIO. Please login in our Client Section.'
+                        });
+                    }
                     return done(null, user, {
                           message: 'Logged In Successfully'
                         }); // user found, return that user
