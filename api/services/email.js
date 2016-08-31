@@ -28,8 +28,8 @@ module.exports = {
 		    host: sails.config.email.host || 'smtp.gmail.com',
 		    port: sails.config.email.port || 587,
 		    auth: {
-		        user: sails.config.email.user || 'skoolstarsupp@gmail.com',
-		        pass: sails.config.email.password || 'skadmin@123'
+		        user: sails.config.email.user || 'demo@gmail.com',
+		        pass: sails.config.email.password || 'password'
 		    }
 		}));
 		// setup e-mail data with unicode symbols
